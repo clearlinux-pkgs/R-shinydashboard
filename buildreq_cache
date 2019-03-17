@@ -1,4 +1,7 @@
 0.7.1
 R-htmltools
+R-httpuv
+R-mime
 R-promises
 R-shiny
+R-xtable

@@ -4,22 +4,27 @@
 #
 Name     : R-shinydashboard
 Version  : 0.7.1
-Release  : 8
+Release  : 9
 URL      : https://cran.r-project.org/src/contrib/shinydashboard_0.7.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/shinydashboard_0.7.1.tar.gz
 Summary  : Create Dashboards with 'Shiny'
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+ MIT OFL-1.1
-Requires: R-htmltools
-Requires: R-promises
-Requires: R-shiny
+Requires: R-httpuv
+Requires: R-mime
+Requires: R-xtable
 BuildRequires : R-htmltools
+BuildRequires : R-httpuv
+BuildRequires : R-mime
 BuildRequires : R-promises
 BuildRequires : R-shiny
+BuildRequires : R-xtable
 BuildRequires : buildreq-R
 
 %description
-a theme on top of 'Shiny', making it easy to create attractive dashboards.
+Shiny Dashboard
+===============
+*Travis:* [![Travis-CI Build Status](https://travis-ci.org/rstudio/shinydashboard.svg?branch=master)](https://travis-ci.org/rstudio/shinydashboard)
 
 %prep
 %setup -q -c -n shinydashboard
@@ -29,10 +34,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539821403
+export SOURCE_DATE_EPOCH=1552852107
 
 %install
-export SOURCE_DATE_EPOCH=1539821403
+export SOURCE_DATE_EPOCH=1552852107
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -68,8 +73,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library shinydashboard|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  shinydashboard || :
 
 
 %files
