@@ -4,24 +4,22 @@
 #
 Name     : R-shinydashboard
 Version  : 0.7.1
-Release  : 15
+Release  : 16
 URL      : https://cran.r-project.org/src/contrib/shinydashboard_0.7.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/shinydashboard_0.7.1.tar.gz
 Summary  : Create Dashboards with 'Shiny'
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+ MIT OFL-1.1
+Requires: R-htmltools
+Requires: R-promises
+Requires: R-shiny
 BuildRequires : R-htmltools
-BuildRequires : R-httpuv
-BuildRequires : R-mime
 BuildRequires : R-promises
 BuildRequires : R-shiny
-BuildRequires : R-xtable
 BuildRequires : buildreq-R
 
 %description
-Shiny Dashboard
-===============
-*Travis:* [![Travis-CI Build Status](https://travis-ci.org/rstudio/shinydashboard.svg?branch=master)](https://travis-ci.org/rstudio/shinydashboard)
+a theme on top of 'Shiny', making it easy to create attractive dashboards.
 
 %prep
 %setup -q -c -n shinydashboard
@@ -30,13 +28,13 @@ Shiny Dashboard
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552941685
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1568749703
 
 %install
-export SOURCE_DATE_EPOCH=1552941685
+export SOURCE_DATE_EPOCH=1568749703
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -65,12 +63,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  shinydashboard || :
+R CMD check --no-manual --no-examples --no-codoc shinydashboard || :
 
 
 %files
