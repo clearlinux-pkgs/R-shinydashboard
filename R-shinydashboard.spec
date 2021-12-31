@@ -4,7 +4,7 @@
 #
 Name     : R-shinydashboard
 Version  : 0.7.2
-Release  : 31
+Release  : 32
 URL      : https://cran.r-project.org/src/contrib/shinydashboard_0.7.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/shinydashboard_0.7.2.tar.gz
 Summary  : Create Dashboards with 'Shiny'
